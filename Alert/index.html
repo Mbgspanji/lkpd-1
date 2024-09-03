@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Mundur Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #alertBox {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+
+        #alertBox.show {
+            display: block;
+        }
+
+        #countdown {
+            font-weight: bold;
+        }
+
+        #alertButton {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #alertButton:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <button id="alertButton">Munculkan Alert</button>
+        <div id="alertBox">
+            Danger! Alert akan tertutup dalam <span id="countdown">5</span> detik.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("alertButton").addEventListener("click", function() {
+            var countdownElement = document.getElementById("countdown");
+            var alertBox = document.getElementById("alertBox");
+            var countdown = 10;
+
+            alertBox.classList.add("show");
+            countdownElement.textContent = countdown;
+
+            var countdownInterval = setInterval(function() {
+                countdown--;
+                countdownElement.textContent = countdown;
+
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    alertBox.classList.remove("show");
+                }
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>

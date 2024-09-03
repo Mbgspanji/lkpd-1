@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Search Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Sebelum Mencari</h2>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search..">
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="output">Tidak mencari data...</p>
+
+    <script>
+        document.querySelector('#searchForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form untuk reload halaman
+            const inputText = document.querySelector('#searchInput').value;
+            const outputElement = document.querySelector('#output');
+
+            if (inputText.trim() === "") {
+                outputElement.textContent = "Tidak mencari data...";
+            } else {
+                outputElement.textContent = "Mencari data " + inputText + "...";
+            }
+        });
+    </script>
+</body>
+</html>
